@@ -37,6 +37,7 @@ class Ad {
 
    }
 
+
    public function getUserAds($user_id) {
 
       $st = $this->conn->prepare("SELECT * FROM ads WHERE user_id = ?");

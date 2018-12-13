@@ -32,8 +32,9 @@ $ad = $object->getOneAd($id);
             <?php
                foreach ($ad as $val ) { ?>
                <div class="card-body">
-                  <h3 class="card-title"><?php echo $val['product_name']; ?></h3>
-                  <h4><span>€ </span><?php echo $val['price']; ?></h4>
+                  <h2 class="card-title"><?php echo $val['product_name']; ?></h2>
+                  <h4>Asking price:</h4>
+                  <h4><span>EUR </span><?php echo $val['price']; ?></h4>
                   <p class="card-text"><?php echo $val['product_description']; ?></p>
                   <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                   4.0 stars
@@ -44,19 +45,35 @@ $ad = $object->getOneAd($id);
             </div>
             <div class="card card-outline-secondary my-4">
                <div class="card-header">
-                  Product Reviews
+                  Offers made
                </div>
                <div class="card-body">
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
                   <small class="text-muted">Posted by Anonymous on 3/1/17</small>
                   <hr>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                  <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                  <hr>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                  <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                  <hr>
-                  <a href="#" class="btn btn-success">Leave a Review</a>
+               </div>
+            </div>
+            <div class="card card-outline-secondary my-4">
+               <div class="card-body">
+                  <form action="../lib/add_offer.php" method="POST">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <span class="input-symbol-euro">
+                              <input type="number" name="price" value="0" min="0" step="1"  />
+                           </span>
+                        </div>
+                        <div class="col-md-6">
+                           <?php
+                              foreach ($ad as $val ) { ?>
+                           <input name="user_id" value="<?php echo $val['user_id']; ?>" hidden/>
+                           <?php
+                           }
+                           ?>
+                           <input name="id" value="<?php echo $id; ?>" hidden/>
+                           <button type="submit" name="submit" class="btn btn-success">Make offer</button><br />
+                        </div>
+                     </div>
+                  </form>
                </div>
             </div>
          </div>
