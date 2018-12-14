@@ -9,11 +9,6 @@ $object->getUserAds($id);
 
 $ads = $object->getUserAds($id);
 
-// echo "<pre>";
-// var_dump($ads);
-// exit();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +28,12 @@ $ads = $object->getUserAds($id);
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
          <h1 class="display-3">Welcome to <span>e_bid!</span></h1>
-         <!-- <img class="headder-img" src="/webshop/public/images/img-02.png" /> -->
          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
          <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
       </header>
-      <!-- Page Features -->
-
+      <!-- Products -->
       <div class="row text-center">
-   <?php foreach ($ads as $ad) { ?>
+      <?php foreach ($ads as $ad) { ?>
          <div class="col-md-3">
             <div class="card">
                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
@@ -57,14 +50,14 @@ $ads = $object->getUserAds($id);
          </div>
          <?php
          }
-   ?>
+      ?>
       </div>
       <div class="row">
          <div class="col-md-12">
-      <?php if ($_SESSION['logged']) {
-            include "../includes/side-widget.php";
-            }
-      ?>
+            <?php if ($_SESSION['logged']) {
+                  include "../includes/side-widget.php";
+               }
+            ?>
          </div>
       </div>
    </div>

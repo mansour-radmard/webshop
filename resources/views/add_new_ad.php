@@ -2,16 +2,17 @@
 include_once "../lib/Ad.php";
 session_start();
 
+/*
+Gets data of the new Ad
+ */
 if (isset($_POST['submit'])) {
    $product_name = $_POST['product_name'];
    $product_description = $_POST['product_description'];
    $price = $_POST['price'];
    $id = $_SESSION['id'];
 
-
-
    $object = new Ad($conn);
-   $object->AddProduct($product_name, $product_description, $price, $id);
+   $object->AddProduct($product_name, $product_description, $price, $id); // Add new Ad to database
 }
 
 ?>
@@ -51,7 +52,7 @@ if (isset($_POST['submit'])) {
          <div class="col-md-4">
             <?php
                if ($_SESSION['logged']) {
-               include "../includes/side-widget.php";
+                  include "../includes/side-widget.php";
                }
             ?>
          </div>

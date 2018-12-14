@@ -237,3 +237,8 @@ div.card-body.user-panel {
    content: "€";
    right: 5px;
 }
+
+button.btn.btn-danger {
+   border-radius: 0px;
+   margin-top: 10px;
+}

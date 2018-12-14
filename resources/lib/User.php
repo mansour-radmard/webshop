@@ -2,14 +2,20 @@
 include_once "config.php";
 session_start();
 
+/*
+User class
+ */
 class User {
 
+   // Databse connection
    private $conn;
    public function __construct($conn) {
       $this->conn = $conn;
    }
 
+   // Login function
    public function Login ($username, $password) {
+
       if (!empty($username) && !empty($password)) {
          $st = $this->conn->prepare("SELECT * FROM users WHERE username=? and password=SHA1(?)");
          $st->bindParam(1, $username);
@@ -35,6 +41,7 @@ class User {
       }
    }
 
+   // Register new user function
    public function Register ($first_name, $last_name, $username, $email, $password) {
 
       $st = $this->conn->prepare("INSERT INTO users (first_name, last_name, username, email, password) VALUES (?, ?, ?, ?, SHA1(?))");
